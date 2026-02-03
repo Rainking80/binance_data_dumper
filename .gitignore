@@ -1,0 +1,9 @@
+.venv
+.vscode
+binance_data
+condensed_data
+models
+condense.log
+train_lstm.log
+train_output.txt
+binance_data_dumper.log
