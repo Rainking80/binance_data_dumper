@@ -619,41 +619,39 @@ def main():
     logger.info(f"Fetching data from {date_start} to {date_end} ({YEARS_TO_FETCH} years)")
 
     # Download funding rates from HyperLiquid (1-hour resolution)
-    if FUNDING_RATE_ENABLED:
-        try:
-            logger.info("#" * 60)
-            logger.info(f"Processing funding rates")
-            logger.info("#" * 60)
+    try:
+        logger.info("#" * 60)
+        logger.info(f"Processing funding rates")
+        logger.info("#" * 60)
 
-            dump_funding_rates(
-                pairs=TRADING_PAIRS_CCXT,
+        dump_funding_rates(
+            pairs=TRADING_PAIRS_CCXT,
+            date_start=date_start,
+            date_end=date_end,
+            output_dir=FUNDING_RATE_OUTPUT_DIR,
+            exchange_id=FUNDING_RATE_EXCHANGE
+        )
+    except Exception as e:
+        logger.error(f"Failed to download funding rates: {e}")
+    
+    # Dump data for data types that don't require timeframe (e.g., metrics with open interest)
+    for data_type in NO_TIMEFRAME_DATA_TYPES:
+        logger.info("#" * 60)
+        logger.info(f"Processing data type: {data_type} (no timeframe)")
+        logger.info("#" * 60)
+        
+        try:
+            dump_data_no_timeframe(
+                output_dir=str(output_path),
+                tickers=binance_tickers,
+                data_type=data_type,
                 date_start=date_start,
                 date_end=date_end,
-                output_dir=FUNDING_RATE_OUTPUT_DIR,
-                exchange_id=FUNDING_RATE_EXCHANGE
+                asset_class=ASSET_CLASS,
             )
         except Exception as e:
-            logger.error(f"Failed to download funding rates: {e}")
-    else:
-        
-        # Dump data for data types that don't require timeframe (e.g., metrics with open interest)
-        for data_type in NO_TIMEFRAME_DATA_TYPES:
-            logger.info("#" * 60)
-            logger.info(f"Processing data type: {data_type} (no timeframe)")
-            logger.info("#" * 60)
-            
-            try:
-                dump_data_no_timeframe(
-                    output_dir=str(output_path),
-                    tickers=binance_tickers,
-                    data_type=data_type,
-                    date_start=date_start,
-                    date_end=date_end,
-                    asset_class=ASSET_CLASS,
-                )
-            except Exception as e:
-                logger.error(f"Failed to complete dump for {data_type}: {e}")
-                continue
+            logger.error(f"Failed to complete dump for {data_type}: {e}")
+            continue
 
 
         # Dump data for each data type and timeframe

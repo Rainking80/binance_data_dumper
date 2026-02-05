@@ -615,3 +615,195 @@
 2026-02-04 14:22:50,376 - INFO - Date range: 2022-02-05 to 2026-02-04
 2026-02-04 14:22:50,376 - INFO - Tickers: ['AAVEUSDC', 'ARBUSDC', 'ASTERUSDC', 'AVAXUSDC', 'BTCUSDC', 'DOGEUSDC', 'DOTUSDC', 'ENSUSDC', 'ETHUSDC', 'ETHFIUSDC', 'FILUSDC', 'HYPEUSDC', 'IPUSDC', 'JTOUSDC', 'LINKUSDC', 'NEARUSDC', 'OPUSDC', 'SEIUSDC', 'SOLUSDC', 'SUIUSDC', 'TAOUSDC', 'TRUMPUSDC', 'WLDUSDC']
 2026-02-04 14:22:50,376 - INFO - Asset class: um
+2026-02-05 16:02:19,633 - INFO - ============================================================
+2026-02-05 16:02:19,633 - INFO - Binance Historical Data Dumper
+2026-02-05 16:02:19,633 - INFO - ============================================================
+2026-02-05 16:02:19,633 - INFO - Converted 23 trading pairs to Binance format
+2026-02-05 16:02:19,633 - INFO - Tickers: ['AAVEUSDC', 'ARBUSDC', 'ASTERUSDC', 'AVAXUSDC', 'BTCUSDC', 'DOGEUSDC', 'DOTUSDC', 'ENSUSDC', 'ETHUSDC', 'ETHFIUSDC', 'FILUSDC', 'HYPEUSDC', 'IPUSDC', 'JTOUSDC', 'LINKUSDC', 'NEARUSDC', 'OPUSDC', 'SEIUSDC', 'SOLUSDC', 'SUIUSDC', 'TAOUSDC', 'TRUMPUSDC', 'WLDUSDC']
+2026-02-05 16:02:19,633 - INFO - Output directory: D:\Workspace\binance_data_dumper\binance_data
+2026-02-05 16:02:19,633 - INFO - Fetching data from 2022-02-06 to 2026-02-05 (4 years)
+2026-02-05 16:02:19,634 - INFO - ############################################################
+2026-02-05 16:02:19,634 - INFO - Processing funding rates
+2026-02-05 16:02:19,634 - INFO - ############################################################
+2026-02-05 16:02:19,634 - INFO - ############################################################
+2026-02-05 16:02:19,634 - INFO - Processing: Funding Rates (HyperLiquid via ccxt)
+2026-02-05 16:02:19,634 - INFO - ############################################################
+2026-02-05 16:02:19,634 - INFO - Date range: 2022-02-06 to 2026-02-05
+2026-02-05 16:02:19,634 - INFO - Pairs: 23
+2026-02-05 16:02:19,634 - INFO - Exchange: hyperliquid
+2026-02-05 16:02:19,634 - INFO - ----------------------------------------
+2026-02-05 16:02:19,634 - INFO - [1/23] Processing AAVE/USDC:USDC
+2026-02-05 16:02:19,634 - INFO - ----------------------------------------
+2026-02-05 16:02:19,649 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:02:19,649 - INFO - Incremental download for AAVE/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:02:33,445 - INFO - Downloaded 49 new funding rate entries for AAVE/USDC:USDC
+2026-02-05 16:02:33,509 - INFO - Saved 22405 funding rate entries for AAVE/USDC:USDC to binance_data\funding_rates\AAVE_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:02:34,012 - INFO - ----------------------------------------
+2026-02-05 16:02:34,012 - INFO - [2/23] Processing ARB/USDC:USDC
+2026-02-05 16:02:34,012 - INFO - ----------------------------------------
+2026-02-05 16:02:34,037 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:02:34,037 - INFO - Incremental download for ARB/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:02:48,346 - INFO - Downloaded 49 new funding rate entries for ARB/USDC:USDC
+2026-02-05 16:02:48,413 - INFO - Saved 23445 funding rate entries for ARB/USDC:USDC to binance_data\funding_rates\ARB_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:02:48,917 - INFO - ----------------------------------------
+2026-02-05 16:02:48,917 - INFO - [3/23] Processing ASTER/USDC:USDC
+2026-02-05 16:02:48,917 - INFO - ----------------------------------------
+2026-02-05 16:02:48,925 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:02:48,925 - INFO - Incremental download for ASTER/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:03:03,145 - INFO - Downloaded 49 new funding rate entries for ASTER/USDC:USDC
+2026-02-05 16:03:03,155 - INFO - Saved 3340 funding rate entries for ASTER/USDC:USDC to binance_data\funding_rates\ASTER_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:03:03,658 - INFO - ----------------------------------------
+2026-02-05 16:03:03,658 - INFO - [4/23] Processing AVAX/USDC:USDC
+2026-02-05 16:03:03,658 - INFO - ----------------------------------------
+2026-02-05 16:03:03,673 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:03:03,674 - INFO - Incremental download for AVAX/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:03:22,009 - INFO - Downloaded 49 new funding rate entries for AVAX/USDC:USDC
+2026-02-05 16:03:22,082 - INFO - Saved 23445 funding rate entries for AVAX/USDC:USDC to binance_data\funding_rates\AVAX_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:03:22,586 - INFO - ----------------------------------------
+2026-02-05 16:03:22,586 - INFO - [5/23] Processing BTC/USDC:USDC
+2026-02-05 16:03:22,589 - INFO - ----------------------------------------
+2026-02-05 16:03:22,605 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:03:22,605 - INFO - Incremental download for BTC/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:03:38,047 - INFO - Downloaded 49 new funding rate entries for BTC/USDC:USDC
+2026-02-05 16:03:38,115 - INFO - Saved 23445 funding rate entries for BTC/USDC:USDC to binance_data\funding_rates\BTC_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:03:38,618 - INFO - ----------------------------------------
+2026-02-05 16:03:38,618 - INFO - [6/23] Processing DOGE/USDC:USDC
+2026-02-05 16:03:38,618 - INFO - ----------------------------------------
+2026-02-05 16:03:38,633 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:03:38,633 - INFO - Incremental download for DOGE/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:03:52,745 - INFO - Downloaded 49 new funding rate entries for DOGE/USDC:USDC
+2026-02-05 16:03:52,817 - INFO - Saved 23445 funding rate entries for DOGE/USDC:USDC to binance_data\funding_rates\DOGE_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:03:53,320 - INFO - ----------------------------------------
+2026-02-05 16:03:53,320 - INFO - [7/23] Processing DOT/USDC:USDC
+2026-02-05 16:03:53,320 - INFO - ----------------------------------------
+2026-02-05 16:03:53,336 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:03:53,336 - INFO - Incremental download for DOT/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:04:07,496 - INFO - Downloaded 49 new funding rate entries for DOT/USDC:USDC
+2026-02-05 16:04:07,557 - INFO - Saved 21050 funding rate entries for DOT/USDC:USDC to binance_data\funding_rates\DOT_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:04:08,061 - INFO - ----------------------------------------
+2026-02-05 16:04:08,061 - INFO - [8/23] Processing ENS/USDC:USDC
+2026-02-05 16:04:08,061 - INFO - ----------------------------------------
+2026-02-05 16:04:08,076 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:04:08,076 - INFO - Incremental download for ENS/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:04:22,699 - INFO - Downloaded 49 new funding rate entries for ENS/USDC:USDC
+2026-02-05 16:04:22,760 - INFO - Saved 18287 funding rate entries for ENS/USDC:USDC to binance_data\funding_rates\ENS_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:04:23,263 - INFO - ----------------------------------------
+2026-02-05 16:04:23,263 - INFO - [9/23] Processing ETH/USDC:USDC
+2026-02-05 16:04:23,263 - INFO - ----------------------------------------
+2026-02-05 16:04:23,278 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:04:23,278 - INFO - Incremental download for ETH/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:04:39,389 - INFO - Downloaded 49 new funding rate entries for ETH/USDC:USDC
+2026-02-05 16:04:39,488 - INFO - Saved 23445 funding rate entries for ETH/USDC:USDC to binance_data\funding_rates\ETH_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:04:39,991 - INFO - ----------------------------------------
+2026-02-05 16:04:39,991 - INFO - [10/23] Processing ETHFI/USDC:USDC
+2026-02-05 16:04:39,991 - INFO - ----------------------------------------
+2026-02-05 16:04:40,005 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:04:40,006 - INFO - Incremental download for ETHFI/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:04:53,590 - INFO - Downloaded 49 new funding rate entries for ETHFI/USDC:USDC
+2026-02-05 16:04:53,638 - INFO - Saved 16477 funding rate entries for ETHFI/USDC:USDC to binance_data\funding_rates\ETHFI_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:04:54,141 - INFO - ----------------------------------------
+2026-02-05 16:04:54,141 - INFO - [11/23] Processing FIL/USDC:USDC
+2026-02-05 16:04:54,141 - INFO - ----------------------------------------
+2026-02-05 16:04:54,187 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:04:54,187 - INFO - Incremental download for FIL/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:05:07,965 - INFO - Downloaded 49 new funding rate entries for FIL/USDC:USDC
+2026-02-05 16:05:08,024 - INFO - Saved 19546 funding rate entries for FIL/USDC:USDC to binance_data\funding_rates\FIL_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:05:08,527 - INFO - ----------------------------------------
+2026-02-05 16:05:08,527 - INFO - [12/23] Processing HYPE/USDC:USDC
+2026-02-05 16:05:08,527 - INFO - ----------------------------------------
+2026-02-05 16:05:08,549 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:05:08,549 - INFO - Incremental download for HYPE/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:05:26,389 - INFO - Downloaded 49 new funding rate entries for HYPE/USDC:USDC
+2026-02-05 16:05:26,419 - INFO - Saved 10253 funding rate entries for HYPE/USDC:USDC to binance_data\funding_rates\HYPE_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:05:26,922 - INFO - ----------------------------------------
+2026-02-05 16:05:26,922 - INFO - [13/23] Processing IP/USDC:USDC
+2026-02-05 16:05:26,922 - INFO - ----------------------------------------
+2026-02-05 16:05:26,928 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:05:26,928 - INFO - Incremental download for IP/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:05:42,698 - INFO - Downloaded 49 new funding rate entries for IP/USDC:USDC
+2026-02-05 16:05:42,725 - INFO - Saved 8573 funding rate entries for IP/USDC:USDC to binance_data\funding_rates\IP_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:05:43,230 - INFO - ----------------------------------------
+2026-02-05 16:05:43,230 - INFO - [14/23] Processing JTO/USDC:USDC
+2026-02-05 16:05:43,230 - INFO - ----------------------------------------
+2026-02-05 16:05:43,245 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:05:43,245 - INFO - Incremental download for JTO/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:05:57,298 - INFO - Downloaded 49 new funding rate entries for JTO/USDC:USDC
+2026-02-05 16:05:57,354 - INFO - Saved 18981 funding rate entries for JTO/USDC:USDC to binance_data\funding_rates\JTO_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:05:57,857 - INFO - ----------------------------------------
+2026-02-05 16:05:57,857 - INFO - [15/23] Processing LINK/USDC:USDC
+2026-02-05 16:05:57,857 - INFO - ----------------------------------------
+2026-02-05 16:05:57,870 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:05:57,870 - INFO - Incremental download for LINK/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:06:12,730 - INFO - Downloaded 49 new funding rate entries for LINK/USDC:USDC
+2026-02-05 16:06:12,802 - INFO - Saved 23426 funding rate entries for LINK/USDC:USDC to binance_data\funding_rates\LINK_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:06:13,306 - INFO - ----------------------------------------
+2026-02-05 16:06:13,306 - INFO - [16/23] Processing NEAR/USDC:USDC
+2026-02-05 16:06:13,306 - INFO - ----------------------------------------
+2026-02-05 16:06:13,320 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:06:13,320 - INFO - Incremental download for NEAR/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:06:28,164 - INFO - Downloaded 49 new funding rate entries for NEAR/USDC:USDC
+2026-02-05 16:06:28,222 - INFO - Saved 19845 funding rate entries for NEAR/USDC:USDC to binance_data\funding_rates\NEAR_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:06:28,726 - INFO - ----------------------------------------
+2026-02-05 16:06:28,726 - INFO - [17/23] Processing OP/USDC:USDC
+2026-02-05 16:06:28,726 - INFO - ----------------------------------------
+2026-02-05 16:06:28,751 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:06:28,751 - INFO - Incremental download for OP/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:06:43,753 - INFO - Downloaded 49 new funding rate entries for OP/USDC:USDC
+2026-02-05 16:06:43,822 - INFO - Saved 23445 funding rate entries for OP/USDC:USDC to binance_data\funding_rates\OP_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:06:44,325 - INFO - ----------------------------------------
+2026-02-05 16:06:44,325 - INFO - [18/23] Processing SEI/USDC:USDC
+2026-02-05 16:06:44,326 - INFO - ----------------------------------------
+2026-02-05 16:06:44,343 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:06:44,343 - INFO - Incremental download for SEI/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:06:58,750 - INFO - Downloaded 49 new funding rate entries for SEI/USDC:USDC
+2026-02-05 16:06:58,818 - INFO - Saved 21720 funding rate entries for SEI/USDC:USDC to binance_data\funding_rates\SEI_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:06:59,321 - INFO - ----------------------------------------
+2026-02-05 16:06:59,321 - INFO - [19/23] Processing SOL/USDC:USDC
+2026-02-05 16:06:59,321 - INFO - ----------------------------------------
+2026-02-05 16:06:59,334 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:06:59,334 - INFO - Incremental download for SOL/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:07:14,338 - INFO - Downloaded 49 new funding rate entries for SOL/USDC:USDC
+2026-02-05 16:07:14,405 - INFO - Saved 23445 funding rate entries for SOL/USDC:USDC to binance_data\funding_rates\SOL_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:07:14,909 - INFO - ----------------------------------------
+2026-02-05 16:07:14,909 - INFO - [20/23] Processing SUI/USDC:USDC
+2026-02-05 16:07:14,909 - INFO - ----------------------------------------
+2026-02-05 16:07:14,922 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:07:14,922 - INFO - Incremental download for SUI/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:07:31,374 - INFO - Downloaded 49 new funding rate entries for SUI/USDC:USDC
+2026-02-05 16:07:31,443 - INFO - Saved 23445 funding rate entries for SUI/USDC:USDC to binance_data\funding_rates\SUI_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:07:31,946 - INFO - ----------------------------------------
+2026-02-05 16:07:31,946 - INFO - [21/23] Processing TAO/USDC:USDC
+2026-02-05 16:07:31,946 - INFO - ----------------------------------------
+2026-02-05 16:07:31,962 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:07:31,962 - INFO - Incremental download for TAO/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:07:46,276 - INFO - Downloaded 49 new funding rate entries for TAO/USDC:USDC
+2026-02-05 16:07:46,329 - INFO - Saved 17208 funding rate entries for TAO/USDC:USDC to binance_data\funding_rates\TAO_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:07:46,832 - INFO - ----------------------------------------
+2026-02-05 16:07:46,832 - INFO - [22/23] Processing TRUMP/USDC:USDC
+2026-02-05 16:07:46,832 - INFO - ----------------------------------------
+2026-02-05 16:07:46,843 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:07:46,843 - INFO - Incremental download for TRUMP/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:08:00,690 - INFO - Downloaded 49 new funding rate entries for TRUMP/USDC:USDC
+2026-02-05 16:08:00,719 - INFO - Saved 9201 funding rate entries for TRUMP/USDC:USDC to binance_data\funding_rates\TRUMP_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:08:01,222 - INFO - ----------------------------------------
+2026-02-05 16:08:01,222 - INFO - [23/23] Processing WLD/USDC:USDC
+2026-02-05 16:08:01,222 - INFO - ----------------------------------------
+2026-02-05 16:08:01,245 - INFO - Found existing funding rate data, last timestamp: 2026-02-03 13:00:00.065000+00:00
+2026-02-05 16:08:01,245 - INFO - Incremental download for WLD/USDC:USDC: fetching from 2026-02-03 14:00:00.065000+00:00
+2026-02-05 16:08:16,631 - INFO - Downloaded 49 new funding rate entries for WLD/USDC:USDC
+2026-02-05 16:08:16,697 - INFO - Saved 22247 funding rate entries for WLD/USDC:USDC to binance_data\funding_rates\WLD_USDC_USDC-1h-funding_rate.json
+2026-02-05 16:08:17,200 - INFO - ========================================
+2026-02-05 16:08:17,200 - INFO - Funding rates: 23/23 successful
+2026-02-05 16:08:17,200 - INFO - ############################################################
+2026-02-05 16:08:17,200 - INFO - Processing data type: metrics (no timeframe)
+2026-02-05 16:08:17,200 - INFO - ############################################################
+2026-02-05 16:08:17,200 - INFO - Starting data dump for metrics (no timeframe)
+2026-02-05 16:08:17,200 - INFO - Date range: 2022-02-06 to 2026-02-05
+2026-02-05 16:08:17,200 - INFO - Tickers: ['AAVEUSDC', 'ARBUSDC', 'ASTERUSDC', 'AVAXUSDC', 'BTCUSDC', 'DOGEUSDC', 'DOTUSDC', 'ENSUSDC', 'ETHUSDC', 'ETHFIUSDC', 'FILUSDC', 'HYPEUSDC', 'IPUSDC', 'JTOUSDC', 'LINKUSDC', 'NEARUSDC', 'OPUSDC', 'SEIUSDC', 'SOLUSDC', 'SUIUSDC', 'TAOUSDC', 'TRUMPUSDC', 'WLDUSDC']
+2026-02-05 16:08:17,201 - INFO - Asset class: um
+2026-02-05 16:20:08,673 - ERROR - Error dumping metrics: [WinError 3] Das System kann den angegebenen Pfad nicht finden: 'binance_data\\um\\daily\\metrics'
+2026-02-05 16:20:08,673 - ERROR - Failed to complete dump for metrics: [WinError 3] Das System kann den angegebenen Pfad nicht finden: 'binance_data\\um\\daily\\metrics'
+2026-02-05 16:20:08,673 - INFO - ============================================================
+2026-02-05 16:20:08,674 - INFO - Data dump completed!
+2026-02-05 16:20:08,674 - INFO - Data saved to: D:\Workspace\binance_data_dumper\binance_data
+2026-02-05 16:20:08,674 - INFO - ============================================================

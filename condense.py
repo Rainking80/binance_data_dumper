@@ -339,7 +339,18 @@ def load_funding_rates(symbol_ccxt: str, funding_dir: Path) -> Optional[pd.DataF
         
         # Floor to hour to ensure alignment
         df['open_time'] = df['datetime'].dt.floor('h')
-        df['open_time_ms'] = (df['open_time'].astype('int64') // 10**6).astype('int64')
+        # Convert to naive datetime (UTC) then to int64 (ns) then to ms
+        if pd.api.types.is_datetime64tz_dtype(df['open_time']):
+            df['open_time_ms'] = (df['open_time'].dt.tz_localize(None).astype('datetime64[ns]').astype('int64') // 10**6).astype('int64')
+        else:
+            df['open_time_ms'] = (df['open_time'].astype('datetime64[ns]').astype('int64') // 10**6).astype('int64')
+        
+        # Safety check for seconds vs milliseconds
+        # REMOVED: potentially dangerous if first row is 0 or outlier. 
+        # We assume input is ms or handled correctly by unit='ms' 
+        # if len(df) > 0 and df['open_time_ms'].iloc[0] < 10000000000:
+        #     logger.warning("  Detected funding timestamps in seconds. Converting to milliseconds...")
+        #     df['open_time_ms'] = df['open_time_ms'] * 1000
         
         # Drop duplicates (keep first if same hour)
         df = df.drop_duplicates(subset=['open_time_ms'], keep='first')
@@ -438,7 +449,18 @@ def combine_all_data(
     if metrics_df is not None and len(metrics_df) > 0:
         # Convert create_time to open_time (ms timestamp)
         metrics_df = metrics_df.copy()
-        metrics_df['open_time'] = (metrics_df['create_time'].astype('int64') // 10**6).astype('int64')
+        # Ensure ns precision before converting to int64
+        # Handle tz-aware by localizing to None (preserves UTC value)
+        if pd.api.types.is_datetime64tz_dtype(metrics_df['create_time']):
+            metrics_df['open_time'] = (metrics_df['create_time'].dt.tz_localize(None).astype('datetime64[ns]').astype('int64') // 10**6).astype('int64')
+        else:
+            metrics_df['open_time'] = (metrics_df['create_time'].astype('datetime64[ns]').astype('int64') // 10**6).astype('int64')
+        
+        # Safety check: if timestamps look like seconds (10 digits), convert to ms (13 digits)
+        # Year 2000 in seconds is ~946,000,000. Year 2000 in ms is ~946,000,000,000.
+        if len(metrics_df) > 0 and metrics_df['open_time'].iloc[0] < 10000000000:
+            logger.warning("  Detected metrics timestamps in seconds. Converting to milliseconds...")
+            metrics_df['open_time'] = metrics_df['open_time'] * 1000
         
         # Select metrics columns to merge
         metrics_cols = ['open_time', 'sum_open_interest', 'sum_open_interest_value',
@@ -1022,7 +1044,7 @@ def engineer_features(df: pd.DataFrame, btc_df: Optional[pd.DataFrame] = None) -
     close_mean = result['close'].rolling(window=100, min_periods=20).mean()
     close_std = result['close'].rolling(window=100, min_periods=20).std()
     result['close_zscore'] = (result['close'] - close_mean) / close_std.replace(0, np.nan)
-    result['close_zscore'] = result['close_zscore'].fillna(0).clip(-5, 5)  # Clip extremes
+    result['close_zscore'] = result['close_zscore'].fillna(0).where(close_mean.notna(), np.nan).clip(-5, 5)  # Clip extremes
     
     # =========================================================================
     # 5. BTC LOG RETURNS (Market Sentiment)
@@ -1085,7 +1107,7 @@ def engineer_features(df: pd.DataFrame, btc_df: Optional[pd.DataFrame] = None) -
         fr_mean = result['funding_rate'].rolling(window=168, min_periods=24).mean()  # 7 days
         fr_std = result['funding_rate'].rolling(window=168, min_periods=24).std()
         result['funding_zscore'] = (result['funding_rate'] - fr_mean) / fr_std.replace(0, np.nan)
-        result['funding_zscore'] = result['funding_zscore'].fillna(0).clip(-5, 5)
+        result['funding_zscore'] = result['funding_zscore'].fillna(0).where(fr_mean.notna(), np.nan).clip(-5, 5)
     else:
         result['funding_zscore'] = 0
         logger.warning("  Missing funding_rate - funding_zscore set to 0")
@@ -1124,7 +1146,7 @@ def engineer_features(df: pd.DataFrame, btc_df: Optional[pd.DataFrame] = None) -
     vol_mean = result['volume'].rolling(window=168, min_periods=24).mean()
     vol_std = result['volume'].rolling(window=168, min_periods=24).std()
     result['volume_zscore'] = (result['volume'] - vol_mean) / vol_std.replace(0, np.nan)
-    result['volume_zscore'] = result['volume_zscore'].fillna(0).clip(-5, 5)
+    result['volume_zscore'] = result['volume_zscore'].fillna(0).where(vol_mean.notna(), np.nan).clip(-5, 5)
     
     # =========================================================================
     # 11. OPEN INTEREST Z-SCORE
@@ -1133,7 +1155,7 @@ def engineer_features(df: pd.DataFrame, btc_df: Optional[pd.DataFrame] = None) -
         oi_mean = result['sum_open_interest'].rolling(window=168, min_periods=24).mean()
         oi_std = result['sum_open_interest'].rolling(window=168, min_periods=24).std()
         result['oi_zscore'] = (result['sum_open_interest'] - oi_mean) / oi_std.replace(0, np.nan)
-        result['oi_zscore'] = result['oi_zscore'].fillna(0).clip(-5, 5)
+        result['oi_zscore'] = result['oi_zscore'].fillna(0).where(oi_mean.notna(), np.nan).clip(-5, 5)
     else:
         result['oi_zscore'] = 0
         logger.warning("  Missing sum_open_interest - oi_zscore set to 0")
@@ -1358,9 +1380,6 @@ def main():
     
     # Get all unique symbols
     all_symbols = set(klines_by_symbol.keys())
-    # DEBUG: Only process BTCUSDC
-    if 'BTCUSDC' in all_symbols:
-        all_symbols = {'BTCUSDC'}
     logger.info(f"Total symbols to process: {len(all_symbols)}")
     
     # ==========================================================================
