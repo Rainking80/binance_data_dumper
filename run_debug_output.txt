@@ -1,0 +1,69 @@
+2026-02-05 15:57:13,224 - WARNING - Numba not installed - VPVR will use slower Python fallback
+2026-02-05 15:57:13,224 - INFO - ============================================================
+2026-02-05 15:57:13,224 - INFO - Binance Data Condenser - Combined Data
+2026-02-05 15:57:13,224 - INFO - ============================================================
+2026-02-05 15:57:13,224 - INFO - Output directory: D:\Workspace\binance_data_dumper\condensed_data
+2026-02-05 15:57:13,224 - INFO - Collecting CSV files...
+2026-02-05 15:57:13,364 - INFO - Found klines for 15 symbols
+2026-02-05 15:57:13,365 - INFO - Found mark prices for 15 symbols
+2026-02-05 15:57:13,365 - INFO - Found metrics for 15 symbols
+2026-02-05 15:57:13,365 - INFO - Total symbols to process: 1
+2026-02-05 15:57:13,365 - INFO - ============================================================
+2026-02-05 15:57:13,365 - INFO - PROCESSING BTC FIRST (BTCUSDC) FOR CROSS-ASSET FEATURES
+2026-02-05 15:57:13,365 - INFO - ============================================================
+2026-02-05 15:57:13,365 - INFO - Processing BTCUSDC (BTC_USDC_USDC) @ 1h
+2026-02-05 15:57:13,538 - INFO -   Klines: 18252 rows
+2026-02-05 15:57:13,665 - INFO -   Mark prices: 18288 rows
+2026-02-05 15:57:14,581 - INFO -   Metrics: 218877 -> 18253 rows (resampled to 1h)
+2026-02-05 15:57:14,603 - INFO -   Funding rates: 23396 rows
+2026-02-05 15:57:14,612 - INFO -   Merged metrics: 18242 non-null OI values
+2026-02-05 15:57:14,612 - INFO -   Debugging Funding Merge...
+2026-02-05 15:57:14,612 - INFO -   Base DF open_time dtype: int64, Funding dtype: int64
+2026-02-05 15:57:14,616 - INFO -   Base size: 18252, Funding size: 23396, OVERLAP: 18251
+2026-02-05 15:57:14,619 - INFO -   Merged funding rates: 18251 raw -> 18252 after ffill
+2026-02-05 15:57:14,622 - INFO -   Combined: 18252 rows
+2026-02-05 15:57:14,622 - INFO -   Start: 2024-01-04 12:00:00+00:00
+2026-02-05 15:57:14,622 - INFO -   End: 2026-02-02 23:00:00+00:00
+2026-02-05 15:57:14,622 - INFO -   Rows removed (missing values at start): 0
+2026-02-05 15:57:14,622 - INFO -   Engineering features...
+2026-02-05 15:57:19,412 - INFO -   Engineered 14 features: aggression_score, sma_slope_1h, sma_slope_4h, dist_to_poc, close_zscore, btc_log_ret, atr_normalized, rsi_divergence, funding_zscore, corr_btc, volume_zscore, oi_zscore, hour_sin, hour_cos
+2026-02-05 15:57:19,432 - INFO - Saved: condensed_data\BTC_USDC_USDC-1h-combined.feather (18252 rows)
+2026-02-05 15:57:19,432 - INFO - BTC data ready: 18252 rows for cross-asset features
+2026-02-05 15:57:19,432 - INFO - ============================================================
+2026-02-05 15:57:19,432 - INFO - PROCESSING REMAINING SYMBOLS
+2026-02-05 15:57:19,432 - INFO - ============================================================
+2026-02-05 15:57:19,432 - INFO - ============================================================
+2026-02-05 15:57:19,432 - INFO - CONDENSATION SUMMARY
+2026-02-05 15:57:19,433 - INFO - ============================================================
+2026-02-05 15:57:19,433 - INFO - Total symbols processed: 1
+2026-02-05 15:57:19,433 - INFO - Successful: 1
+2026-02-05 15:57:19,433 - INFO - Failed: 0
+2026-02-05 15:57:19,433 - INFO - Total rows in output: 18,252
+2026-02-05 15:57:19,433 - INFO - Total rows removed (missing values): 0
+2026-02-05 15:57:19,433 - INFO - 
+2026-02-05 15:57:19,433 - INFO - Per-symbol summary:
+2026-02-05 15:57:19,433 - INFO - --------------------------------------------------------------------------------
+2026-02-05 15:57:19,433 - INFO - Symbol               Start                  End                          Rows    Removed
+2026-02-05 15:57:19,433 - INFO - --------------------------------------------------------------------------------
+2026-02-05 15:57:19,433 - INFO - BTCUSDC              2024-01-04 12:00:00    2026-02-02 23:00:00        18,252          0
+2026-02-05 15:57:19,433 - INFO - --------------------------------------------------------------------------------
+2026-02-05 15:57:19,433 - INFO - 
+Created files:
+2026-02-05 15:57:19,434 - INFO -   - AAVE_USDC_USDC-1h-combined.feather (1.11 MB)
+2026-02-05 15:57:19,434 - INFO -   - ARB_USDC_USDC-1h-combined.feather (3.21 MB)
+2026-02-05 15:57:19,434 - INFO -   - AVAX_USDC_USDC-1h-combined.feather (3.39 MB)
+2026-02-05 15:57:19,434 - INFO -   - BTC_USDC_USDC-1h-combined.feather (4.74 MB)
+2026-02-05 15:57:19,434 - INFO -   - DOGE_USDC_USDC-1h-combined.feather (3.91 MB)
+2026-02-05 15:57:19,434 - INFO -   - ETH_USDC_USDC-1h-combined.feather (3.78 MB)
+2026-02-05 15:57:19,434 - INFO -   - ETHFI_USDC_USDC-1h-combined.feather (3.20 MB)
+2026-02-05 15:57:19,434 - INFO -   - FIL_USDC_USDC-1h-combined.feather (3.13 MB)
+2026-02-05 15:57:19,434 - INFO -   - IP_USDC_USDC-1h-combined.feather (1.70 MB)
+2026-02-05 15:57:19,434 - INFO -   - LINK_USDC_USDC-1h-combined.feather (3.56 MB)
+2026-02-05 15:57:19,434 - INFO -   - NEAR_USDC_USDC-1h-combined.feather (3.14 MB)
+2026-02-05 15:57:19,434 - INFO -   - SOL_USDC_USDC-1h-combined.feather (3.75 MB)
+2026-02-05 15:57:19,435 - INFO -   - SUI_USDC_USDC-1h-combined.feather (3.80 MB)
+2026-02-05 15:57:19,435 - INFO -   - TRUMP_USDC_USDC-1h-combined.feather (1.64 MB)
+2026-02-05 15:57:19,435 - INFO -   - WLD_USDC_USDC-1h-combined.feather (3.61 MB)
+2026-02-05 15:57:19,435 - INFO - ============================================================
+2026-02-05 15:57:19,435 - INFO - Condensation completed!
+2026-02-05 15:57:19,435 - INFO - ============================================================

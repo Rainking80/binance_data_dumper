@@ -448,12 +448,45 @@ def combine_all_data(
         metrics_subset = metrics_df[metrics_cols].drop_duplicates(subset=['open_time'], keep='first')
         
         base_df = base_df.merge(metrics_subset, on='open_time', how='left')
-        logger.debug(f"Merged metrics data: {len(metrics_subset)} rows")
+        post_merge = base_df['sum_open_interest'].notna().sum() if 'sum_open_interest' in base_df.columns else 0
+        
+        # DEBUG LOGGING
+        if post_merge == 0:
+            logger.error("  MERGE FAILED: 0 non-null OI values!")
+            logger.error(f"  Base DF open_time dtype: {base_df['open_time'].dtype}, Metrics dtype: {metrics_subset['open_time'].dtype}")
+            logger.error(f"  Base DF Sample: {base_df['open_time'].head().tolist()}")
+            logger.error(f"  Metrics Sample: {metrics_subset['open_time'].head().tolist()}")
+            
+            # Check overlap
+            base_times = set(base_df['open_time'])
+            metrics_times = set(metrics_subset['open_time'])
+            overlap = base_times.intersection(metrics_times)
+            logger.error(f"  Base size: {len(base_times)}, Metrics size: {len(metrics_times)}, OVERLAP: {len(overlap)}")
+            if len(overlap) > 0:
+                logger.error(f"  Overlap Sample: {list(overlap)[:5]}")
+        
+        logger.info(f"  Merged metrics: {post_merge} non-null OI values")
     
     # Merge funding rate data if available
     if funding_df is not None and len(funding_df) > 0:
+        # DEBUG LOGGING
+        logger.info("  Debugging Funding Merge...")
+        logger.info(f"  Base DF open_time dtype: {base_df['open_time'].dtype}, Funding dtype: {funding_df['open_time'].dtype}")
+        
+        base_times = set(base_df['open_time'])
+        funding_times = set(funding_df['open_time'])
+        overlap = base_times.intersection(funding_times)
+        logger.info(f"  Base size: {len(base_times)}, Funding size: {len(funding_times)}, OVERLAP: {len(overlap)}")
+        
         base_df = base_df.merge(funding_df, on='open_time', how='left')
-        logger.debug(f"Merged funding rate data: {len(funding_df)} rows")
+        
+        # Forward-fill funding rate (it only comes every 8 hours, but we have hourly data)
+        # This ensures we have funding rate values for all hours until the next update
+        if 'funding_rate' in base_df.columns:
+            funding_non_null_before = base_df['funding_rate'].notna().sum()
+            base_df['funding_rate'] = base_df['funding_rate'].ffill()
+            funding_non_null_after = base_df['funding_rate'].notna().sum()
+            logger.info(f"  Merged funding rates: {funding_non_null_before} raw -> {funding_non_null_after} after ffill")
     
     # Add date column
     base_df['date'] = base_df['datetime'].dt.date
@@ -971,31 +1004,16 @@ def engineer_features(df: pd.DataFrame, btc_df: Optional[pd.DataFrame] = None) -
     result['va_position'] = result['va_position'].fillna(0)
     
     # =========================================================================
-    # 4. FVG FEATURES (Fair Value Gaps)
+    # 4. FVG FEATURES (Fair Value Gaps) - SKIPPED
     # =========================================================================
-    # Calculate FVG using the fast Numba implementation (3 outputs)
-    fvg_bull_dist, fvg_bear_dist, fvg_imbalance = _detect_fvg_fast(
-        highs=result['high'].values,
-        lows=result['low'].values,
-        closes=result['close'].values,
-        min_gap_pct=0.001  # Minimum 0.1% gap
-    )
-    
-    # 4a. Distance to nearest bullish FVG (support below)
-    # Lower = stronger support nearby = bullish
-    result['fvg_bull_dist'] = fvg_bull_dist
-    result['fvg_bull_dist'] = result['fvg_bull_dist'].clip(0, 0.1)  # Cap at 10%
-    
-    # 4b. Distance to nearest bearish FVG (resistance above)
-    # Lower = stronger resistance nearby = bearish
-    result['fvg_bear_dist'] = fvg_bear_dist
-    result['fvg_bear_dist'] = result['fvg_bear_dist'].clip(0, 0.1)  # Cap at 10%
-    
-    # 4c. FVG Imbalance score
-    # Positive = more bullish FVGs (support) = bullish
-    # Negative = more bearish FVGs (resistance) = bearish
-    result['fvg_imbalance'] = fvg_imbalance
-    result['fvg_imbalance'] = result['fvg_imbalance'].fillna(0)
+    # NOTE: FVG features have been disabled because:
+    # 1. On 1-hour candles, true FVGs (gaps) almost never occur
+    # 2. Permutation importance testing showed 0% importance for all FVG features
+    # 3. The Numba fallback has issues with keyword arguments
+    # Setting to constant values that will be filtered out by train_lstm.py
+    result['fvg_bull_dist'] = 0.1  # Default "no FVG nearby" value
+    result['fvg_bear_dist'] = 0.1
+    result['fvg_imbalance'] = 0.0
     
     # =========================================================================
     # 5. CLOSE Z-SCORE (Normalized Price Position)
@@ -1340,6 +1358,9 @@ def main():
     
     # Get all unique symbols
     all_symbols = set(klines_by_symbol.keys())
+    # DEBUG: Only process BTCUSDC
+    if 'BTCUSDC' in all_symbols:
+        all_symbols = {'BTCUSDC'}
     logger.info(f"Total symbols to process: {len(all_symbols)}")
     
     # ==========================================================================

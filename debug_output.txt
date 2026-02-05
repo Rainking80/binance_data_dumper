@@ -1,0 +1,38 @@
+============================================================
+DEBUGGING Z-SCORE ISSUES
+============================================================
+
+1. FUNDING RATE DATA
+----------------------------------------
+Loaded funding rate entries: 23396
+Open time ms samples: [1683849600000, 1683878400000, 1683907200000, 1683936000000, 1683964800000]
+Time range: 2023-05-12 00:00:00.048000+00:00 to 2026-02-03 13:00:00.065000+00:00
+
+2. CONDENSED DATA
+----------------------------------------
+Condensed shape: (18252, 49)
+Open time samples: [1704369600000, 1704373200000, 1704376800000, 1704380400000, 1704384000000]
+Time range: 2024-01-04 12:00:00+00:00 to 2026-02-02 23:00:00+00:00
+
+3. TIMESTAMP OVERLAP
+----------------------------------------
+Funding rate unique timestamps: 23396
+Condensed unique timestamps: 18252
+OVERLAPPING timestamps: 18251
+
+4. METRICS (OPEN INTEREST) DATA
+----------------------------------------
+Metrics directory contains: 15 symbol directories
+BTCUSDC has 761 CSV files
+First CSV columns: ['create_time', 'symbol', 'sum_open_interest', 'sum_open_interest_value', 'count_toptrader_long_short_ratio', 'sum_toptrader_long_short_ratio', 'count_long_short_ratio', 'sum_taker_long_short_vol_ratio']
+First CSV rows: 128
+create_time sample: ['2024-01-04 12:35:00', '2024-01-04 12:40:00', '2024-01-04 12:50:00']
+First timestamp (ms): 1704371700000
+Floored first timestamp (ms): 1704369600000
+
+5. SYMBOL MAPPING CHECK
+----------------------------------------
+Binance symbol: BTCUSDC
+Converted: BTCUSDC -> BTC_USDC_USDC
+
+Looking for the symbol mapping in collect_csv_files...

@@ -1,0 +1,18 @@
+============================================================
+DEBUGGING RESAMPLED METRICS
+============================================================
+1. After read_and_concat_metrics:
+   Shape: (2719, 8)
+   Columns: ['create_time', 'symbol', 'sum_open_interest', 'sum_open_interest_value', 'count_toptrader_long_short_ratio', 'sum_toptrader_long_short_ratio', 'count_long_short_ratio', 'sum_taker_long_short_vol_ratio']
+   create_time dtype: datetime64[ns, UTC]
+   create_time sample: [Timestamp('2024-01-04 12:35:00+0000', tz='UTC'), Timestamp('2024-01-04 12:40:00+0000', tz='UTC'), Timestamp('2024-01-04 12:50:00+0000', tz='UTC')]
+
+2. After resample_metrics_to_hourly:
+   Shape: (228, 7)
+   Columns: ['create_time', 'sum_open_interest', 'sum_open_interest_value', 'count_toptrader_long_short_ratio', 'sum_toptrader_long_short_ratio', 'count_long_short_ratio', 'sum_taker_long_short_vol_ratio']
+   create_time dtype: datetime64[ns, UTC]
+   create_time sample: [Timestamp('2024-01-04 12:00:00+0000', tz='UTC'), Timestamp('2024-01-04 13:00:00+0000', tz='UTC'), Timestamp('2024-01-04 14:00:00+0000', tz='UTC')]
+
+3. Simulating combine_all_data conversion:
+   Before conversion - create_time dtype: datetime64[ns, UTC]
+   After conversion - open_time sample: [1704369600000, 1704373200000, 1704376800000]

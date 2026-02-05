@@ -1,0 +1,39 @@
+======================================================================
+COMPREHENSIVE MERGE DEBUG
+======================================================================
+
+[1] LOADING KLINES
+--------------------------------------------------
+Found 27 klines files
+Klines: 648 rows
+Klines open_time range: 1767225600000 to 1770073200000
+Klines open_time dtype: int64
+Klines datetime range: 2026-01-01 00:00:00+00:00 to 2026-02-02 23:00:00+00:00
+
+[2] LOADING & RESAMPLING METRICS
+--------------------------------------------------
+Found 761 metrics files
+Raw metrics: 218877 rows
+Raw metrics time range: 2024-01-04 12:35:00+00:00 to 2026-02-03 00:00:00+00:00
+Resampled metrics: 18253 rows
+Resampled create_time dtype: datetime64[ns, UTC]
+Resampled time range: 2024-01-04 12:00:00+00:00 to 2026-02-03 00:00:00+00:00
+
+[3] CONVERTING METRICS TO OPEN_TIME
+--------------------------------------------------
+Metrics open_time dtype: int64
+Metrics open_time range: 1704369600000 to 1770076800000
+
+[4] CHECKING TIMESTAMP OVERLAP
+--------------------------------------------------
+Klines unique timestamps: 648
+Metrics unique timestamps: 18253
+OVERLAP: 648
+Sample overlapping timestamps: [1767225600000, 1767283200000, 1767916800000, 1767456000000, 1768320000000]
+
+[5] ATTEMPTING MERGE
+--------------------------------------------------
+Merging on 'open_time'...
+base_df open_time dtype: int64
+metrics_subset open_time dtype: int64
+RESULT: 648 non-null OI values out of 648 rows

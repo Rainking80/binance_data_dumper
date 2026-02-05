@@ -128,7 +128,8 @@ def get_directional_labels(symbol, close, daily_vol):
     
     # B. Define Vertical Barrier (Time Limit)
     # Big caps (BTC/ETH) need longer expiry due to lower volatility
-    expiry_hours = 48 if asset_type == 'big' else 12
+    # ALTs: Increased from 12h to 24h to reduce "Nothing" class imbalance
+    expiry_hours = 48 if asset_type == 'big' else 24
     
     t1 = close.index.searchsorted(t_events + pd.Timedelta(hours=expiry_hours))
     t1 = t1[t1 < close.shape[0]]
@@ -144,7 +145,8 @@ def get_directional_labels(symbol, close, daily_vol):
     target = daily_vol.loc[valid_indices]
     
     # Apply minimum return threshold for alts
-    min_ret = 0.0 if asset_type == 'big' else 0.02
+    # Reduced from 0.02 to 0.015 (1.5%) to get more Long/Short labels
+    min_ret = 0.0 if asset_type == 'big' else 0.015
     if min_ret > 0:
         target = target.apply(lambda x: max(x, min_ret))
     
@@ -308,10 +310,11 @@ FEATURE_COLUMNS = [
     'vol_above_poc_pct',    # Volume above POC ratio (bearish pressure)
     'va_position',          # Position within Value Area (-1 to +1)
     
-    # --- FVG (Fair Value Gaps) ---
-    'fvg_bull_dist',        # Distance to nearest bullish FVG (support)
-    'fvg_bear_dist',        # Distance to nearest bearish FVG (resistance)
-    'fvg_imbalance',        # Net FVG imbalance (-1 to +1)
+    # --- FVG (Fair Value Gaps) - REMOVED ---
+    # NOTE: fvg_bull_dist, fvg_bear_dist, fvg_imbalance removed because:
+    # On 1-hour candles, true FVGs (gaps) almost never occur, resulting in
+    # 100% of values being capped at 0.1 (no FVG detected). These features
+    # had 0% importance in permutation testing.
     
     # --- ORDER FLOW ---
     'aggression_score',     # Stationary CVD proxy (buy/sell imbalance)

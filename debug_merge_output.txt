@@ -1,0 +1,50 @@
+============================================================
+DEBUGGING MERGE FAILURE
+============================================================
+
+1. FUNDING RATE MERGE SIMULATION
+----------------------------------------
+Funding DF shape: (23396, 2)
+Funding open_time dtype: int64
+Funding open_time sample: [1683849600000, 1683878400000, 1683907200000]
+
+2. RAW KLINE SIMULATION
+----------------------------------------
+Klines shape: (120, 12)
+Klines open_time dtype: int64
+Klines open_time sample: [1767225600000, 1767229200000, 1767232800000]
+
+3. MERGE TEST
+----------------------------------------
+Klines open_time dtype: int64
+Funding open_time dtype: int64
+Klines unique times: 120
+Funding unique times: 23396
+Overlapping: 120
+Sample overlap: [1767225600000, 1767240000000, 1767283200000, 1767355200000, 1767254400000]
+
+Merge result: 120 non-null funding_rate values out of 120 rows
+
+4. CONDENSED FILE CHECK
+----------------------------------------
+Condensed open_time dtype: int64
+Condensed open_time sample: [1704369600000, 1704373200000, 1704376800000]
+
+Klines type: <class 'numpy.int64'>
+Funding type: <class 'numpy.int64'>
+Condensed type: <class 'numpy.int64'>
+
+5. METRICS MERGE SIMULATION
+----------------------------------------
+Metrics shape: (1279, 8)
+Metrics create_time dtype: datetime64[ns, UTC]
+Metrics open_time dtype: int64
+Metrics open_time sample: [1704371700000, 1704372000000, 1704372600000]
+Metrics unique times: 1279
+Overlapping with klines: 0
+
+*** NO OVERLAP! ***
+Sample klines times: [1767225600000, 1767229200000, 1767232800000, 1767236400000, 1767240000000]
+Sample metrics times: [1704371700000, 1704372000000, 1704372600000, 1704372900000, 1704373200000]
+Klines dates: [Timestamp('2026-01-01 00:00:00'), Timestamp('2026-01-01 01:00:00'), Timestamp('2026-01-01 02:00:00')]
+Metrics dates: [Timestamp('2024-01-04 12:35:00'), Timestamp('2024-01-04 12:40:00'), Timestamp('2024-01-04 12:50:00')]

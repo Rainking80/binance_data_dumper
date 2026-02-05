@@ -601,3 +601,17 @@
 2026-02-03 15:29:58,981 - INFO - Data dump completed!
 2026-02-03 15:29:58,982 - INFO - Data saved to: D:\Workspace\binance_data_dumper\binance_data
 2026-02-03 15:29:58,982 - INFO - ============================================================
+2026-02-04 14:22:50,375 - INFO - ============================================================
+2026-02-04 14:22:50,376 - INFO - Binance Historical Data Dumper
+2026-02-04 14:22:50,376 - INFO - ============================================================
+2026-02-04 14:22:50,376 - INFO - Converted 23 trading pairs to Binance format
+2026-02-04 14:22:50,376 - INFO - Tickers: ['AAVEUSDC', 'ARBUSDC', 'ASTERUSDC', 'AVAXUSDC', 'BTCUSDC', 'DOGEUSDC', 'DOTUSDC', 'ENSUSDC', 'ETHUSDC', 'ETHFIUSDC', 'FILUSDC', 'HYPEUSDC', 'IPUSDC', 'JTOUSDC', 'LINKUSDC', 'NEARUSDC', 'OPUSDC', 'SEIUSDC', 'SOLUSDC', 'SUIUSDC', 'TAOUSDC', 'TRUMPUSDC', 'WLDUSDC']
+2026-02-04 14:22:50,376 - INFO - Output directory: D:\Workspace\binance_data_dumper\binance_data
+2026-02-04 14:22:50,376 - INFO - Fetching data from 2022-02-05 to 2026-02-04 (4 years)
+2026-02-04 14:22:50,376 - INFO - ############################################################
+2026-02-04 14:22:50,376 - INFO - Processing data type: metrics (no timeframe)
+2026-02-04 14:22:50,376 - INFO - ############################################################
+2026-02-04 14:22:50,376 - INFO - Starting data dump for metrics (no timeframe)
+2026-02-04 14:22:50,376 - INFO - Date range: 2022-02-05 to 2026-02-04
+2026-02-04 14:22:50,376 - INFO - Tickers: ['AAVEUSDC', 'ARBUSDC', 'ASTERUSDC', 'AVAXUSDC', 'BTCUSDC', 'DOGEUSDC', 'DOTUSDC', 'ENSUSDC', 'ETHUSDC', 'ETHFIUSDC', 'FILUSDC', 'HYPEUSDC', 'IPUSDC', 'JTOUSDC', 'LINKUSDC', 'NEARUSDC', 'OPUSDC', 'SEIUSDC', 'SOLUSDC', 'SUIUSDC', 'TAOUSDC', 'TRUMPUSDC', 'WLDUSDC']
+2026-02-04 14:22:50,376 - INFO - Asset class: um
